@@ -10,6 +10,7 @@ com.miaoshaproject
   |==miaosha
   
   |==sql
+  
 项目采用前后端分离，html/gethost.js 可以修改访问的ip地址
 
 html 存放前端页面
