@@ -40,8 +40,17 @@ public class MqProducer {
     @Value("${mq.nameserver.addr}")
     private String nameAddr;
 
-    @Value("${mq.topicname}")
-    private String topicName;
+    @Value("${mq.topic.stock}")
+    private String stockTopic;
+
+    @Value("${mq.topic.email}")
+    private String emailTopic;
+
+//    @Value("${email.item.buy.success.subject}")
+    private String buySuccessSubject = "商品购买成功";
+
+//    @Value("${email.item.buy.success.content}")
+    private String buySuccessContent = "用户%s：\\n您好，您购买的商品<span style=\"color:red\">%s<strong>，已下单成功，订单号%s，请尽快支付\n";
 
     @PostConstruct
     public void init() throws MQClientException {
@@ -65,8 +74,10 @@ public class MqProducer {
                 Integer itemId = (Integer) ((Map) args).get("itemId");
                 Integer amount = (Integer) ((Map) args).get("amount");
                 String stockLogId = (String) ((Map) args).get("stockLogId");
+                String userEmail = (String) ((Map) args).get("userEmail");
+                String userName = (String) ((Map) args).get("userName");
                 try {
-                    orderService.createOrder(userId, itemId, promoId, amount, stockLogId);
+                    orderService.createOrder(userId, userName, itemId, promoId, amount, stockLogId, userEmail);
                 } catch (BussinessException e) {
 
                     //设置stockLog为回滚状态
@@ -92,8 +103,8 @@ public class MqProducer {
                     return LocalTransactionState.UNKNOW;
                 }
 
-                if(stockLogDO.getStatus().intValue() == 2) return LocalTransactionState.COMMIT_MESSAGE;
-                else if(stockLogDO.getStatus().intValue() == 1) return LocalTransactionState.UNKNOW;
+                if (stockLogDO.getStatus().intValue() == 2) return LocalTransactionState.COMMIT_MESSAGE;
+                else if (stockLogDO.getStatus().intValue() == 1) return LocalTransactionState.UNKNOW;
                 else return LocalTransactionState.ROLLBACK_MESSAGE;
             }
         });
@@ -105,7 +116,7 @@ public class MqProducer {
         Map<String, Object> bodyMap = new HashMap<>();
         bodyMap.put("itemId", itemId);
         bodyMap.put("amount", amount);
-        Message message = new Message(topicName, "increase", JSON.toJSON(bodyMap).toString().getBytes(Charset.forName("utf-8")));
+        Message message = new Message(stockTopic, "increase", JSON.toJSON(bodyMap).toString().getBytes(Charset.forName("utf-8")));
 
         try {
             producer.send(message);
@@ -126,7 +137,7 @@ public class MqProducer {
     }
 
     //异步 同步事务扣减消息
-    public boolean transationAsynReduceStock(Integer userId, Integer promoId, Integer itemId, Integer amount, String stockLogId) {
+    public boolean transationAsynReduceStock(Integer userId, Integer promoId, Integer itemId, Integer amount, String stockLogId, String userName, String itemTitle, String email) {
 
         //body 提交到mq
         Map<String, Object> bodyMap = new HashMap<>();
@@ -140,8 +151,11 @@ public class MqProducer {
         argsMap.put("amount", amount);
         argsMap.put("userId", userId);
         argsMap.put("promoId", promoId);
+        argsMap.put("userEmail", email);
+        argsMap.put("userName", userName);
+        argsMap.put("itemTitle", itemTitle);
         argsMap.put("stockLogId", stockLogId);
-        Message message = new Message(topicName, "increase", JSON.toJSON(bodyMap).toString().getBytes(Charset.forName("utf-8")));
+        Message message = new Message(stockTopic, "increase", JSON.toJSON(bodyMap).toString().getBytes(Charset.forName("utf-8")));
 
         TransactionSendResult sendResult = null;
         try {
@@ -154,5 +168,31 @@ public class MqProducer {
         else if (sendResult.getLocalTransactionState() == LocalTransactionState.COMMIT_MESSAGE) return true;
 
         return false;
+    }
+
+    //异步发送 购买成功通知 邮件
+    public void asyncSendBuySuccessEmail(String orderId, String userName, String itemTitle, String userEmail) {
+
+        Map<String, Object> bodyMap = new HashMap<>();
+
+        final String sendSubject = buySuccessSubject;
+        final String sendContent = String.format(buySuccessSubject, userName, itemTitle, orderId);
+
+        bodyMap.put("sendSubject", sendSubject);
+        bodyMap.put("sendContent", sendContent);
+        bodyMap.put("userEmail", userEmail);
+        System.out.println("生产者：邮件发送");
+        Message message = new Message(emailTopic, JSON.toJSON(bodyMap).toString().getBytes(Charset.forName("utf-8")));
+        try {
+            producer.send(message);
+        } catch (MQClientException e) {
+            e.printStackTrace();
+        } catch (RemotingException e) {
+            e.printStackTrace();
+        } catch (MQBrokerException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

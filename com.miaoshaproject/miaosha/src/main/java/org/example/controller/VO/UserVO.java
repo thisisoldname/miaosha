@@ -14,6 +14,7 @@ public class UserVO implements Serializable {
     private Byte gender;
     private Integer age;
     private String telphone;
+    private String email;
 
     public Integer getId() {
         return id;
@@ -53,5 +54,13 @@ public class UserVO implements Serializable {
 
     public void setTelphone(String telphone) {
         this.telphone = telphone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -11,6 +11,7 @@ import org.example.dao.SequenceDOMapper;
 import org.example.dao.StockLogDOMapper;
 import org.example.error.BussinessException;
 import org.example.error.EnumBusinessErr;
+import org.example.mq.MqProducer;
 import org.example.service.ItemService;
 import org.example.service.OrderService;
 import org.example.service.UserService;
@@ -48,10 +49,12 @@ public class OrderServiceImpl implements OrderService {
     private SequenceDOMapper sequenceDOMapper;
     @Autowired
     private StockLogDOMapper stockLogDOMapper;
+    @Autowired
+    private MqProducer mqProducer;
 
     @Override
     @Transactional
-    public OrderModel createOrder(Integer userId, Integer itemId, Integer promoId, Integer amount, String stockLogId) throws BussinessException {
+    public OrderModel createOrder(Integer userId, String userName, Integer itemId, Integer promoId, Integer amount, String stockLogId, String userEmail) throws BussinessException {
 
         //校验下单状态，商品是否存在，用户是否合法，购买数量是否合法
 //        ItemModel itemModel = itemService.getItemById(itemId);
@@ -84,11 +87,15 @@ public class OrderServiceImpl implements OrderService {
         itemService.increaseSales(itemId, amount);
         //更新流水状态
         StockLogDO stockLogDO = stockLogDOMapper.selectByPrimaryKey(stockLogId);
-        if(stockLogDO == null) {
+        if (stockLogDO == null) {
             throw new BussinessException(EnumBusinessErr.UNKNOWN_ERROR);
         }
         stockLogDO.setStatus(2);
         stockLogDOMapper.updateByPrimaryKeySelective(stockLogDO);
+
+        //异步发送 购买成功 邮件
+        if (userEmail != null)
+            mqProducer.asyncSendBuySuccessEmail(orderModel.getId(), userName, itemModel.getTitle(), userEmail);
 //        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
 //            @Override
 //            public void afterCommit() {

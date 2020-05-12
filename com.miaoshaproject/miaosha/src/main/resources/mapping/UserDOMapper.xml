@@ -9,9 +9,10 @@
     <result column="telphone" property="telphone" jdbcType="VARCHAR" />
     <result column="register_mode" property="registerMode" jdbcType="VARCHAR" />
     <result column="third_party_id" property="thirdPartyId" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, gender, age, telphone, register_mode, third_party_id
+    id, name, gender, age, telphone, register_mode, third_party_id, email
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -32,10 +33,10 @@
   <insert id="insert" parameterType="org.example.DO.UserDO" useGeneratedKeys="true" keyProperty="id">
     insert into user_info (id, name, gender, 
       age, telphone, register_mode, 
-      third_party_id)
+      third_party_id, email)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, 
       #{age,jdbcType=INTEGER}, #{telphone,jdbcType=VARCHAR}, #{registerMode,jdbcType=VARCHAR}, 
-      #{thirdPartyId,jdbcType=VARCHAR})
+      #{thirdPartyId,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.example.DO.UserDO" useGeneratedKeys="true" keyProperty="id">
     insert into user_info
@@ -61,6 +62,9 @@
       <if test="thirdPartyId != null" >
         third_party_id,
       </if>
+      <if test="email != null" >
+        email,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -83,6 +87,9 @@
       </if>
       <if test="thirdPartyId != null" >
         #{thirdPartyId,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -107,6 +114,9 @@
       <if test="thirdPartyId != null" >
         third_party_id = #{thirdPartyId,jdbcType=VARCHAR},
       </if>
+      <if test="email != null" >
+        third_party_id = #{email,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -118,6 +128,7 @@
       telphone = #{telphone,jdbcType=VARCHAR},
       register_mode = #{registerMode,jdbcType=VARCHAR},
       third_party_id = #{thirdPartyId,jdbcType=VARCHAR}
+      email = #{email,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

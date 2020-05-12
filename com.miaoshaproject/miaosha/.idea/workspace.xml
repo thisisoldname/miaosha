@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f3f09fe7-da2f-4cbc-9602-132538c4cddc" name="Default Changelist" comment="" />
+    <list default="true" id="f3f09fe7-da2f-4cbc-9602-132538c4cddc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/config/EmailConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mq/EmailConsummer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/EmailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/emailChineseInfo.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DO/UserDO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DO/UserDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/VO/UserVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/VO/UserVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mq/MqConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mq/MqConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mq/MqProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mq/MqProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/ItemServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/ItemServerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/model/UserModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapping/UserDOMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapping/UserDOMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/AppTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +53,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -50,6 +76,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -68,7 +98,7 @@
       <recent name="org.example.mq" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Spring Boot.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.App" />
       <module name="miaosha" />
@@ -189,7 +219,14 @@
       <workItem from="1588398522809" duration="599000" />
       <workItem from="1588483347145" duration="2938000" />
       <workItem from="1588562131579" duration="1264000" />
-      <workItem from="1588647546611" duration="3840000" />
+      <workItem from="1588647546611" duration="5039000" />
+      <workItem from="1588739672331" duration="183000" />
+      <workItem from="1588742626673" duration="3063000" />
+      <workItem from="1588915937061" duration="110000" />
+      <workItem from="1588927158757" duration="13808000" />
+      <workItem from="1589004425638" duration="3205000" />
+      <workItem from="1589076641216" duration="646000" />
+      <workItem from="1589114923088" duration="6228000" />
     </task>
     <servers />
   </component>
@@ -201,10 +238,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1586273444545" />
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1587618259828">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1588939355814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1587618259828" />
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1588939355814" />
     <state x="548" y="271" width="439" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587230369021">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -217,66 +254,84 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587978344394" />
-    <state width="1493" height="298" key="GridCell.Tab.0.bottom" timestamp="1588651793127">
+    <state width="1493" height="323" key="GridCell.Tab.0.bottom" timestamp="1589263943912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588651793127" />
-    <state width="1493" height="298" key="GridCell.Tab.0.center" timestamp="1588651793127">
+    <state width="1493" height="323" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589263943912" />
+    <state width="1493" height="323" key="GridCell.Tab.0.center" timestamp="1589263943912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588651793127" />
-    <state width="1493" height="298" key="GridCell.Tab.0.left" timestamp="1588651793127">
+    <state width="1493" height="323" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589263943912" />
+    <state width="1493" height="323" key="GridCell.Tab.0.left" timestamp="1589263943912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588651793127" />
-    <state width="1493" height="298" key="GridCell.Tab.0.right" timestamp="1588651793127">
+    <state width="1493" height="323" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589263943912" />
+    <state width="1493" height="323" key="GridCell.Tab.0.right" timestamp="1589263943912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="298" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588651793127" />
-    <state width="1493" height="235" key="GridCell.Tab.1.bottom" timestamp="1588649928552">
+    <state width="1493" height="323" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589263943912" />
+    <state width="1493" height="323" key="GridCell.Tab.1.bottom" timestamp="1589263943913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588649928552" />
-    <state width="1493" height="235" key="GridCell.Tab.1.center" timestamp="1588649928551">
+    <state width="1493" height="323" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589263943913" />
+    <state width="1493" height="323" key="GridCell.Tab.1.center" timestamp="1589263943913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1588649928551" />
-    <state width="1493" height="235" key="GridCell.Tab.1.left" timestamp="1588649928551">
+    <state width="1493" height="323" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589263943913" />
+    <state width="1493" height="323" key="GridCell.Tab.1.left" timestamp="1589263943912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1588649928551" />
-    <state width="1493" height="235" key="GridCell.Tab.1.right" timestamp="1588649928552">
+    <state width="1493" height="323" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589263943912" />
+    <state width="1493" height="323" key="GridCell.Tab.1.right" timestamp="1589263943913">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="235" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588649928552" />
+    <state width="1493" height="323" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589263943913" />
+    <state width="1493" height="323" key="GridCell.Tab.2.bottom" timestamp="1589263943913">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="323" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589263943913" />
+    <state width="1493" height="323" key="GridCell.Tab.2.center" timestamp="1589263943913">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="323" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1589263943913" />
+    <state width="1493" height="323" key="GridCell.Tab.2.left" timestamp="1589263943913">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="323" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1589263943913" />
+    <state width="1493" height="323" key="GridCell.Tab.2.right" timestamp="1589263943913">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="323" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1589263943913" />
     <state x="270" y="54" key="SettingsEditor" timestamp="1587788375373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="54" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587788375373" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1588578857788">
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589255277319">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1588578857788" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589255277319" />
     <state x="321" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1586508053373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="321" y="148" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.824@0.0.1536.824" timestamp="1586508053373" />
+    <state x="178" y="107" key="new project wizard" timestamp="1588739723372">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="107" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1588739723372" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1588929491200">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1588929491200" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1587795129268">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587795129268" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/mq/MqProducer.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="convertFromModel(userModel)" />
+      </configuration>
       <configuration name="Application">
         <watch expression="request.getSession()" />
       </configuration>

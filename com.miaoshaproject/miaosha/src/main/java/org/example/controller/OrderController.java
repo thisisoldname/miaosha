@@ -11,6 +11,7 @@ import org.example.response.CommonReturnType;
 import org.example.service.ItemService;
 import org.example.service.OrderService;
 import org.example.service.PromoService;
+import org.example.service.model.ItemModel;
 import org.example.service.model.OrderModel;
 import org.example.service.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,7 @@ public class OrderController extends BaseController {
         if (StringUtils.isEmpty(token))
             throw new BussinessException(EnumBusinessErr.USER_NOT_LOGIN);
         UserVO loginUser = (UserVO) redisTemplate.opsForValue().get(token);
+        ItemModel itemModel = itemService.getItemByIdInCache(itemId);
         if (loginUser == null)
             throw new BussinessException(EnumBusinessErr.USER_NOT_LOGIN);
         //校验秒杀令牌
@@ -80,7 +82,7 @@ public class OrderController extends BaseController {
         //加入库存流水
         String stockLogId = itemService.initStockLog(itemId, amount);
         //下单
-        if (!mqProducer.transationAsynReduceStock(loginUser.getId(), promoId, itemId, amount, stockLogId)) {
+        if (!mqProducer.transationAsynReduceStock(loginUser.getId(), promoId, itemId, amount, stockLogId, loginUser.getName(), itemModel.getTitle(), loginUser.getEmail())) {
             throw new BussinessException(EnumBusinessErr.STOCK_NOT_ENOUGH);
         }
 //            }

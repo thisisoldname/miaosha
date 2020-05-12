@@ -35,6 +35,16 @@ public class UserModel implements Serializable {
     @NotBlank(message = "密码不能为空")
     private String encrptPassword;
 
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -9,6 +9,7 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.example.dao.ItemStockDOMapper;
+import org.example.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,7 @@ import java.util.Map;
  *Dec:Todo
  ****************************/
 @Component
-public class MqConsumer {
+public class EmailConsummer {
 
     @Autowired
     ItemStockDOMapper itemStockDOMapper;
@@ -33,16 +34,26 @@ public class MqConsumer {
     @Value("${mq.nameserver.addr}")
     private String nameAddr;
 
-    @Value("${mq.topic.stock}")
-    private String stockTopic;
+    @Value("${mq.topic.email}")
+    private String emailTopic;
+
+    @Autowired
+    private EmailService emailService;
+
+//    @Value("${email.item.buy.success.subject}")
+//    private String buySuccessSubject;
+//
+//    @Value("${email.item.buy.success.content}")
+//    private String uccessContent;
 
     @PostConstruct
     public void init() throws MQClientException {
 
-        consumer = new DefaultMQPushConsumer("stock_consumer_group");
+        consumer = new DefaultMQPushConsumer("email_consumer_group");
         consumer.setNamesrvAddr(nameAddr);
-        consumer.subscribe(stockTopic, "*");
-
+        consumer.subscribe(emailTopic, "*");
+        //发送消息失败重试次数
+        consumer.setMaxReconsumeTimes(1);
         consumer.registerMessageListener(new MessageListenerConcurrently() {
 
             @Override
@@ -51,9 +62,16 @@ public class MqConsumer {
                 Message message = list.get(0);
                 String jsonString = new String(message.getBody());
                 Map<String, Object> map = JSON.parseObject(jsonString, Map.class);
-                Integer itemId = (Integer) map.get("itemId");
-                Integer amount = (Integer) map.get("amount");
-                itemStockDOMapper.decreaseStock(itemId, amount);
+                String sendSubject = (String) map.get("sendSubject");
+                String sendContent = (String) map.get("sendContent");
+                String userEmail = (String) map.get("userEmail");
+                //由于邮件经常发送失败异常，RocketMQ消费机制会一直重试消费消息，设置重试次数
+
+                System.out.println("发送邮件中......"+userEmail);
+                //发送邮件
+                emailService.senHtmlEmail(new String[]{userEmail}, sendSubject, sendContent);
+                System.out.println("发送邮件成功......"+userEmail);
+
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });

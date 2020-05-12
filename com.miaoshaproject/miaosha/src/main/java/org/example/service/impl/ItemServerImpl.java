@@ -143,7 +143,6 @@ public class ItemServerImpl implements ItemService {
             redisTemplate.opsForValue().set("promo_item_stock_invalid"+itemId, "true");
             return true;
         }
-
 //        boolean result = mqProducer.asyncReduceStock(itemId, amount);
 //        if (!result) {
 //            redisTemplate.opsForValue().increment("promo_item_stock_" + itemId, amount.intValue());
